@@ -8,7 +8,6 @@ This repository is set up for development with [GitHub Codespaces](https://docs.
 ## Included Utilities
 
 - Docker-in-Docker (with Docker Compose v2 support)
-- protobuf compiler
 - Helm
 - KinD (Kubernetes in Docker)
 - kubectl
@@ -21,8 +20,25 @@ Fire up the devcontainer
 
 Once it has started, from the command line run
 
-```
+```bash
 kind cluster create
 ```
 
-You now have a kubernetes cluster running in Kind. Interact with it using kubectl commands.
+You now have a kubernetes cluster running in Kind. Interact with it using `kubectl` commands.
+
+### Deploy
+
+```bash
+kubectl apply -f base/deployment.yaml
+```
+
+You can also deploy using [kustomize](https://kustomize.io/) to leverage templates and [dev](./overlays/dev/increase_replicas.yaml) and [prod](./overlays/prod/increase_replicas.yaml) values patching.
+
+```bash
+kubectl apply -k overlays/dev
+```
+or
+
+```bash
+kubectl apply -k overlays/prod
+```
