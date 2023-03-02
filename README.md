@@ -48,7 +48,7 @@ kubectl apply -k overlays/prod
 
 ```bash
 helm repo add kubernetes-dashboard https://kubernetes.github.io/dashboard/
-helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard
+helm install --create-namespace kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard
 ```
 
 Add [sample user](https://github.com/kubernetes/dashboard/blob/master/docs/user/access-control/creating-sample-user.md) for dashboard
